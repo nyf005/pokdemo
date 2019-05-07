@@ -1,0 +1,81 @@
+<div>
+  <h6 class="text-center">Pokemon Search</h6>
+
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="basic-addon1">Q1-2: </span>
+    </div>
+    <input
+      type="text"
+      class="form-control"
+      name="searchString"
+      class="form-control"
+      type="text"
+      [(ngModel)]="searchString"
+    />
+  </div>
+
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="basic-addon1">Q3: </span>
+    </div>
+    <input
+      class="form-control"
+      type="text"
+      readonly
+      value="{{ searchString }}"
+    />
+  </div>
+
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <label class="input-group-text" for="inputGroupSelect01">Q4-7 :</label>
+    </div>
+    <select
+      name="selectPokemon"
+      class="custom-select"
+      id="inputGroupSelect01"
+      [(ngModel)]="searchString"
+    >
+      <option selected>Choose...</option>
+      <option *ngFor="let pokemon of pokemons" value="{{ pokemon.name }}">
+        {{ pokemon.id }} - {{ pokemon.name }}
+      </option>
+    </select>
+  </div>
+
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="basic-addon1">Q8 :</span>
+    </div>
+    <input
+      class="form-control"
+      name="recherche"
+      [(ngModel)]="searchString"
+      type="text"
+      placeholder="Votre recherche"
+    />
+    <div class="input-group-append">
+      <button
+        class="btn btn-success"
+        type="button"
+        (click)="setPokemonId(sharedId)"
+      >
+        GO
+      </button>
+    </div>
+  </div>
+ 
+  <div class="list-group">
+    <a href="#"
+      class="list-group-item list-group-item-action"
+      *ngFor="let pokemon of (pokemons | FilterPokemonPipe: searchString | paginate: { itemsPerPage: 10, currentPage: p })"
+      (click)="selectPokemon(pokemon)"
+    >
+      <span class="badge badge-primary badge-pill">{{ pokemon.id }}</span>
+      | {{ pokemon.name }}
+    </a>
+  </div>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  <br />
+</div>

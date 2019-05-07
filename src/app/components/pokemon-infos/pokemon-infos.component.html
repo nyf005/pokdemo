@@ -1,0 +1,90 @@
+<div *ngIf="pokemon">
+  <h6 class="text-center">Pokemon Infos</h6>
+
+  <div class="card bg-light mb-1">
+    <div class="card-header">
+      <img src="{{ pokemon.img.front_default }}" alt="image" />
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card-text text-right">
+            <div class="alert alert-secondary">
+              ID
+            </div>
+            <div class="alert alert-secondary">
+              NOM
+            </div>
+            <div class="alert alert-secondary">
+              TAILLE
+            </div>
+            <div class="alert alert-secondary">
+              POIDS
+            </div>
+            <div class="alert alert-secondary">
+              EXPERIENCE DE BASE
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card-text text-left">
+            <div class="alert alert-primary">
+              {{ pokemon.id }}
+            </div>
+            <div class="alert alert-primary">
+              {{ pokemon.name | uppercase }}
+            </div>
+            <div class="alert alert-primary">
+              {{ pokemon.height }}
+            </div>
+            <div class="alert alert-primary">
+              {{ pokemon.weight }}
+            </div>
+            <div class="alert alert-primary">
+              {{ pokemon.base_experience }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <table class="table table-striped table-sm">
+    <!-- <caption>Statistiques</caption> -->
+    <tr>
+      <th></th>
+      <th colspan="2">STAT DE BASE</th>
+      <th colspan="2">EFFORT</th>
+    </tr>
+    <tr>
+      <th>VITESSE</th>
+      <td colspan="2">{{ pokemon.stats[0].base_stat }}</td>
+      <td colspan="2">{{ pokemon.stats[0].effort }}</td>
+    </tr>
+    <tr>
+      <th>DEFENSE SPECIALE</th>
+      <td colspan="2">{{ pokemon.stats[1].base_stat }}</td>
+      <td colspan="2">{{ pokemon.stats[1].effort }}</td>
+    </tr>
+    <tr>
+      <th>ATTAQUE SPECIALE</th>
+      <td colspan="2">{{ pokemon.stats[2].base_stat }}</td>
+      <td colspan="2">{{ pokemon.stats[2].effort }}</td>
+    </tr>
+    <tr>
+      <th>DEFENSE</th>
+      <td colspan="2">{{ pokemon.stats[3].base_stat }}</td>
+      <td colspan="2">{{ pokemon.stats[3].effort }}</td>
+    </tr>
+    <tr>
+      <th>ATTAQUE</th>
+      <td colspan="2">{{ pokemon.stats[4].base_stat }}</td>
+      <td colspan="2">{{ pokemon.stats[4].effort }}</td>
+    </tr>
+    <tr>
+      <th>HP</th>
+      <td colspan="2">{{ pokemon.stats[5].base_stat }}</td>
+      <td colspan="2">{{ pokemon.stats[5].effort }}</td>
+    </tr>
+  </table>
+</div>
